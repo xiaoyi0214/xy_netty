@@ -29,7 +29,7 @@ public class NIOServer {
         while (true){
             System.out.println("等待连接发生。。。");
             // 轮询监听channel里的key，select是阻塞的，accept也是阻塞的
-            int select = selector.select();
+            selector.select(); //timeout：到了一定时间后，就算没有连接也会轮询一次select
             System.out.println("有连接到来。。。");
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
             while (iterator.hasNext()){

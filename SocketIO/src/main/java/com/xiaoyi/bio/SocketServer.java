@@ -17,6 +17,9 @@ public class SocketServer {
             // 阻塞方法
             Socket socket = serverSocket.accept();
             System.out.println("有客户端链接了。。。");
+            // 若不放入新的线程中，数据传输较慢时会有阻塞问题
+//            handler(socket);
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
